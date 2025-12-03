@@ -281,16 +281,25 @@
                 <div class="text-2xl font-bold">
                     <span class="text-primary">Mohamed</span> Houz
                 </div>
-                <div class="hidden md:flex space-x-8">
+                <div id="nav-menu" class="hidden md:flex space-x-8">
                     <a href="#home" class="nav-link">Home</a>
                     <a href="#about" class="nav-link">About</a>
                     <a href="#skills" class="nav-link">Skills</a>
                     <a href="#projects" class="nav-link">Projects</a>
                     <a href="#contact" class="nav-link">Contact</a>
                 </div>
-                <button class="md:hidden text-xl">
+                <button id="mobile-menu-btn" class="md:hidden text-xl text-primary hover:text-primary/80 transition-colors">
                     <i class="fas fa-bars"></i>
                 </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-nav" class="hidden md:hidden flex flex-col space-y-4 mt-6 bg-dark/50 backdrop-blur-md p-6 rounded-lg border border-gray-800">
+                <a href="#home" class="nav-link block hover:text-primary">Home</a>
+                <a href="#about" class="nav-link block hover:text-primary">About</a>
+                <a href="#skills" class="nav-link block hover:text-primary">Skills</a>
+                <a href="#projects" class="nav-link block hover:text-primary">Projects</a>
+                <a href="#contact" class="nav-link block hover:text-primary">Contact</a>
             </div>
         </nav>
         
@@ -310,12 +319,12 @@
                         Specializing in full-stack development, UI/UX, and creative problem solving.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                        <button class="bg-gradient-to-r from-primary to-secondary px-6 sm:px-8 py-2 sm:py-3 rounded-full font-medium hover:opacity-90 transition-opacity text-sm sm:text-base">
+                        <a href="#projects" class="inline-block bg-gradient-to-r from-primary to-secondary px-6 sm:px-8 py-2 sm:py-3 rounded-full font-medium hover:opacity-90 transition-opacity text-sm sm:text-base text-center">
                             View Projects
-                        </button>
-                        <button class="border border-primary px-6 sm:px-8 py-2 sm:py-3 rounded-full font-medium hover:bg-primary/10 transition-colors text-sm sm:text-base">
+                        </a>
+                        <a href="#contact" class="inline-block border border-primary px-6 sm:px-8 py-2 sm:py-3 rounded-full font-medium hover:bg-primary/10 transition-colors text-sm sm:text-base text-center">
                             Contact Me
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="animate-on-scroll flex justify-center order-1 md:order-2">
@@ -588,6 +597,13 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Behance Embed Project -->
+                    <div class="project-card bg-dark-lighter rounded-2xl overflow-hidden border border-gray-800 animate-on-scroll flex items-center justify-center p-6">
+                        <div class="w-full flex justify-center">
+                            <iframe src="https://www.behance.net/embed/project/229621531?ilo0=1" height="316" class="w-full max-w-sm rounded-lg" allowfullscreen lazyload frameborder="0" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -727,8 +743,26 @@
     </div>
     
     <script>
-        // Scroll animations and contact -> WhatsApp handler
+        // Scroll animations, mobile menu toggle, and contact -> WhatsApp handler
         document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileNav = document.getElementById('mobile-nav');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileNav.classList.toggle('hidden');
+                });
+            }
+            
+            // Close mobile menu when a nav link is clicked
+            const mobileNavLinks = mobileNav ? mobileNav.querySelectorAll('a') : [];
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.add('hidden');
+                });
+            });
+            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
