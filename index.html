@@ -6,6 +6,7 @@
     <title>Mohamed Houz | Multidisciplinary Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
     <script>
         tailwind.config = {
             theme: {
@@ -22,242 +23,27 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-        
-        /* Intro Animation */
-        .intro-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0a0a0f;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: fadeOut 0.8s ease-out 3.5s forwards;
-        }
-        
-        .intro-logo {
-            font-size: 8rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            background: linear-gradient(135deg, #00d4ff, #7c3aed, #c0c0c0);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 2s ease-in-out infinite, scaleIn 1s ease-out forwards;
-            opacity: 0;
-            transform: scale(0.5);
-        }
-        
-        @keyframes scaleIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.5) rotate(-5deg);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.1) rotate(2deg);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) rotate(0deg);
-            }
-        }
-        
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-        
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
-        
-        .main-content {
-            opacity: 0;
-            animation: fadeInContent 1s ease-out 3.8s forwards;
-        }
-        
-        @keyframes fadeInContent {
-            to {
-                opacity: 1;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .intro-logo {
-                font-size: 4rem;
-            }
-        }
-        
-        @media (max-width: 640px) {
-            body {
-                font-size: 14px;
-            }
-        }
-        
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Animated gradient background */
-        @keyframes gradientMove {
-            0% {
-                transform: translate(0%, 0%) rotate(0deg);
-            }
-            33% {
-                transform: translate(30%, -30%) rotate(120deg);
-            }
-            66% {
-                transform: translate(-20%, 20%) rotate(240deg);
-            }
-            100% {
-                transform: translate(0%, 0%) rotate(360deg);
-            }
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) translateX(0px);
-            }
-            25% {
-                transform: translateY(-20px) translateX(20px);
-            }
-            50% {
-                transform: translateY(0px) translateX(40px);
-            }
-            75% {
-                transform: translateY(20px) translateX(20px);
-            }
-        }
-        
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            overflow: hidden;
-        }
-        
-        .blob {
-            border-radius: 50%;
-            filter: blur(120px);
-            position: absolute;
-            opacity: 0.6;
-            will-change: transform;
-        }
-        
-        .blob-1 {
-            background: linear-gradient(135deg, #00d4ff, #7c3aed);
-            width: 600px;
-            height: 600px;
-            top: -10%;
-            left: -10%;
-            animation: gradientMove 20s ease-in-out infinite;
-        }
-        
-        .blob-2 {
-            background: linear-gradient(135deg, #c0c0c0, #7c3aed);
-            width: 500px;
-            height: 500px;
-            bottom: -10%;
-            right: -10%;
-            animation: gradientMove 25s ease-in-out infinite reverse;
-        }
-        
-        .blob-3 {
-            background: linear-gradient(135deg, #00d4ff, #c0c0c0);
-            width: 450px;
-            height: 450px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: float 18s ease-in-out infinite;
-        }
-        
-        .skill-bar {
-            height: 8px;
-            border-radius: 4px;
-            background: rgba(0, 212, 255, 0.1);
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            border-radius: 4px;
-            background: linear-gradient(90deg, #00d4ff, #7c3aed);
-        }
-        
-        .project-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(0, 212, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
-        }
-        
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: #00d4ff;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #00d4ff, #7c3aed);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .social-icon {
-            transition: transform 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            transform: translateY(-5px);
-        }
+      /* Behance iframe styling */
+      .behance-embed-wrapper {
+        overflow: hidden !important;
+        width: 100%;
+      }
+
+      .behance-embed-wrapper iframe {
+        width: 100% !important;
+        height: 316px;
+        border: none !important;
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .behance-embed-wrapper iframe::-webkit-scrollbar {
+        display: none;
+      }
     </style>
 </head>
 <body class="bg-dark text-light">
@@ -539,70 +325,135 @@
         </section>
         
         <!-- Projects Section -->
-        <section id="projects" class="py-20 relative">
-            <div class="max-w-7xl mx-auto px-8">
-                <div class="text-center mb-16 animate-on-scroll">
-                    <h2 class="text-4xl font-bold mb-4">Featured Projects</h2>
+        <section id="projects" class="py-12 sm:py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-8">
+                <div class="text-center mb-12 sm:mb-16 animate-on-scroll">
+                    <h2 class="text-2xl sm:text-4xl font-bold mb-4">My Projects</h2>
                     <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
                 </div>
                 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Graphic Project: Cloths Branding -->
-                    <div class="project-card bg-dark-lighter rounded-2xl overflow-hidden border border-gray-800 animate-on-scroll">
-                        <img src="cloths.jpg" alt="Cloths branding" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">social media posts for le7rayfi.com</h3>
-                            <p class="text-gray-400 mb-4">Brand identity, packaging mockups and social assets for a fashion collection.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-primary/10 px-2 py-1 rounded text-xs">Photoshop</span>
-                                <span class="bg-primary/10 px-2 py-1 rounded text-xs">Illustrator</span>
-                                <span class="bg-primary/10 px-2 py-1 rounded text-xs">Branding</span>
+                <!-- Graphic Design Projects -->
+                <div class="mb-12 sm:mb-20">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-8 animate-on-scroll">
+                        <i class="fas fa-paint-brush text-primary mr-3"></i>Graphic Design
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Jewelry Packaging -->
+                        <div class="animate-on-scroll rounded-2xl overflow-hidden border border-gray-800 bg-dark-lighter">
+                            <div class="behance-embed-wrapper" style="overflow: hidden;">
+                                <iframe src="https://www.behance.net/embed/project/237592729?ilo0=1" height="316" width="100%" allowfullscreen="true" lazyload="true" frameborder="0" allow="clipboard-write" referrerPolicy="strict-origin-when-cross-origin" style="display: block; margin: 0; padding: 0; border: none;"></iframe>
                             </div>
-                            <div class="flex space-x-4">
-                                <a href="https://www.behance.net/gallery/229621531/le7rayfi" target="_blank" class="text-primary hover:text-primary/80"><i class="fas fa-external-link-alt mr-2"></i>View Project</a>
+                        </div>
+                        
+                        <!-- Marketing Campaign -->
+                        <div class="animate-on-scroll rounded-2xl overflow-hidden border border-gray-800 bg-dark-lighter">
+                            <div class="behance-embed-wrapper" style="overflow: hidden;">
+                                <iframe src="https://www.behance.net/embed/project/238457527?ilo0=1" height="316" width="100%" allowfullscreen="true" lazyload="true" frameborder="0" allow="clipboard-write" referrerPolicy="strict-origin-when-cross-origin" style="display: block; margin: 0; padding: 0; border: none;"></iframe>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Media Posts -->
+                        <div class="animate-on-scroll rounded-2xl overflow-hidden border border-gray-800 bg-dark-lighter">
+                            <div class="behance-embed-wrapper" style="overflow: hidden;">
+                                <iframe src="https://www.behance.net/embed/project/229621531?ilo0=1" height="316" width="100%" allowfullscreen="true" lazyload="true" frameborder="0" allow="clipboard-write" referrerPolicy="strict-origin-when-cross-origin" style="display: block; margin: 0; padding: 0; border: none;"></iframe>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 235432111 -->
+                        <div class="animate-on-scroll rounded-2xl overflow-hidden border border-gray-800 bg-dark-lighter">
+                            <div class="behance-embed-wrapper" style="overflow: hidden;">
+                                <iframe src="https://www.behance.net/embed/project/235432111?ilo0=1" height="316" width="100%" allowfullscreen="true" lazyload="true" frameborder="0" allow="clipboard-write" referrerPolicy="strict-origin-when-cross-origin" style="display: block; margin: 0; padding: 0; border: none;"></iframe>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Graphic Project: Jewlery Packaging -->
-                    <div class="project-card bg-dark-lighter rounded-2xl overflow-hidden border border-gray-800 animate-on-scroll">
-                        <img src="jewlery.jpg" alt="Jewelry packaging" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Jewelry Packaging</h3>
-                            <p class="text-gray-400 mb-4">Packaging design and product mockups for a boutique jewelry line.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-primary/10 px-2 py-1 rounded text-xs">Packaging</span>
-                                <span class="bg-primary/10 px-2 py-1 rounded text-xs">Photoshop</span>
-                                <span class="bg-primary/10 px-2 py-1 rounded text-xs">Mockups</span>
+                    
+                    <div class="mt-8 text-center">
+                        <a href="https://www.behance.net/mohamedouze" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-primary to-secondary px-8 py-3 rounded-full font-medium hover:opacity-90 transition-opacity text-center">
+                            <i class="fas fa-external-link-alt mr-2"></i>See More on Behance
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Development Projects -->
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-8 animate-on-scroll">
+                        <i class="fas fa-code text-primary mr-3"></i>Development
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Project 1: Ring On Scroll Animation -->
+                        <div class="animate-on-scroll project-card rounded-2xl overflow-hidden border border-gray-800 bg-dark-lighter hover:border-primary/50 transition-colors">
+                            <div class="relative overflow-hidden h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                                <img src="dev1.jpeg" alt="Ring On Scroll Animation" class="w-full h-full object-cover">
                             </div>
-                            <div class="flex space-x-4">
-                                <a href="https://www.behance.net/gallery/237592729/JEWELRY" target="_blank" class="text-primary hover:text-primary/80"><i class="fas fa-external-link-alt mr-2"></i>View Project</a>
+                            <div class="p-6">
+                                <h4 class="text-lg font-bold mb-2">Ring On Scroll Animation</h4>
+                                <p class="text-sm text-gray-400 mb-4">An interactive scrolling animation project featuring smooth ring animations triggered by scroll events. Built with vanilla JavaScript and CSS animations.</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-primary/10 px-2 py-1 rounded text-xs">JavaScript</span>
+                                    <span class="bg-primary/10 px-2 py-1 rounded text-xs">CSS3</span>
+                                    <span class="bg-primary/10 px-2 py-1 rounded text-xs">HTML5</span>
+                                </div>
+                                <div class="flex gap-3">
+                                    <a href="https://github.com/MHouz/RING-ON-SCROLL-ANIMATION" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-primary/80 transition-colors flex items-center text-sm">
+                                        <i class="fab fa-github mr-1"></i>GitHub
+                                    </a>
+                                    <a href="https://mhouz.github.io/RING-ON-SCROLL-ANIMATION/" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-secondary/80 transition-colors flex items-center text-sm">
+                                        <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 2: Jewelry Store -->
+                        <div class="animate-on-scroll project-card rounded-2xl overflow-hidden border border-gray-800 bg-dark-lighter hover:border-primary/50 transition-colors">
+                            <div class="relative overflow-hidden h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                                <img src="dev2.png" alt="Jewelry Store" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-lg font-bold mb-2">Jewelry Store</h4>
+                                <p class="text-sm text-gray-400 mb-4">A modern jewelry e-commerce website showcasing products with an elegant design. Features product showcase, responsive layout, and smooth user experience.</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-primary/10 px-2 py-1 rounded text-xs">HTML5</span>
+                                    <span class="bg-primary/10 px-2 py-1 rounded text-xs">CSS3</span>
+                                    <span class="bg-primary/10 px-2 py-1 rounded text-xs">JavaScript</span>
+                                </div>
+                                <div class="flex gap-3">
+                                    <a href="https://github.com/MHouz/JEWELRYS" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-primary/80 transition-colors flex items-center text-sm">
+                                        <i class="fab fa-github mr-1"></i>GitHub
+                                    </a>
+                                    <a href="https://mhouz.github.io/JEWELRYS/" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-secondary/80 transition-colors flex items-center text-sm">
+                                        <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3: Movies -->
+                        <div class="animate-on-scroll project-card rounded-2xl overflow-hidden border border-gray-800 bg-dark-lighter hover:border-primary/50 transition-colors">
+                            <div class="relative overflow-hidden h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                                <img src="dev3.jpeg" alt="Movies Project" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-lg font-bold mb-2">Movies</h4>
+                                <p class="text-sm text-gray-400 mb-4">A movies application project built with React. Features dynamic content, interactive UI, and modern web development practices.</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-primary/10 px-2 py-1 rounded text-xs">React</span>
+                                    <span class="bg-primary/10 px-2 py-1 rounded text-xs">JavaScript</span>
+                                    <span class="bg-primary/10 px-2 py-1 rounded text-xs">API</span>
+                                </div>
+                                <div class="flex gap-3">
+                                    <a href="https://github.com/MHouz/movies" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-primary/80 transition-colors flex items-center text-sm">
+                                        <i class="fab fa-github mr-1"></i>GitHub
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Graphic Project: Marketing Campaign -->
-                    <div class="project-card bg-dark-lighter rounded-2xl overflow-hidden border border-gray-800 animate-on-scroll">
-                        <img src="marketing.png" alt="Marketing campaign" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Marketing Campaign</h3>
-                            <p class="text-gray-400 mb-4">Visual assets and social media creatives for a product marketing campaign.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-primary/10 px-2 py-1 rounded text-xs">Social Ads</span>
-                                <span class="bg-primary/10 px-2 py-1 rounded text-xs">Graphics</span>
-                                <span class="bg-primary/10 px-2 py-1 rounded text-xs">Content</span>
-                            </div>
-                            <div class="flex space-x-4">
-                                <a href="https://www.behance.net/gallery/238457527/MARKETING-AGENCY" target="_blank" class="text-primary hover:text-primary/80"><i class="fas fa-external-link-alt mr-2"></i>View Project</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Behance Embed Project -->
-                    <div class="project-card bg-dark-lighter rounded-2xl overflow-hidden border border-gray-800 animate-on-scroll flex items-center justify-center p-6">
-                        <div class="w-full flex justify-center">
-                            <iframe src="https://www.behance.net/embed/project/229621531?ilo0=1" height="316" class="w-full max-w-sm rounded-lg" allowfullscreen lazyload frameborder="0" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                        </div>
+                    
+                    <div class="mt-8 text-center">
+                        <a href="https://github.com/MHouz" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-primary to-secondary px-8 py-3 rounded-full font-medium hover:opacity-90 transition-opacity text-center">
+                            <i class="fab fa-github mr-2"></i>View All on GitHub
+                        </a>
                     </div>
                 </div>
             </div>
@@ -742,89 +593,6 @@
         </footer>
     </div>
     
-    <script>
-        // Scroll animations, mobile menu toggle, and contact -> WhatsApp handler
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileNav = document.getElementById('mobile-nav');
-            
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    mobileNav.classList.toggle('hidden');
-                });
-            }
-            
-            // Close mobile menu when a nav link is clicked
-            const mobileNavLinks = mobileNav ? mobileNav.querySelectorAll('a') : [];
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileNav.classList.add('hidden');
-                });
-            });
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                observer.observe(el);
-            });
-            
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        window.scrollTo({
-                            top: target.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Contact form -> open WhatsApp with message
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-
-                    const name = (document.getElementById('name') || {}).value || '';
-                    const email = (document.getElementById('email') || {}).value || '';
-                    const subject = (document.getElementById('subject') || {}).value || '';
-                    const message = (document.getElementById('message') || {}).value || '';
-
-                    if (!message.trim()) {
-                        alert('Please enter a message before sending.');
-                        return;
-                    }
-
-                    // Your WhatsApp number in international format without + or spaces
-                    const waNumber = '212710825506';
-
-                    let text = `Message from ${name || 'Guest'}\n`;
-                    if (email) text += `Email: ${email}\n`;
-                    if (subject) text += `Subject: ${subject}\n`;
-                    text += `\n${message}`;
-
-                    const waUrl = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(text);
-
-                    // Open WhatsApp (new tab on desktop, app on mobile)
-                    window.open(waUrl, '_blank');
-
-                    // Optionally reset the form after opening WhatsApp
-                    // contactForm.reset();
-                });
-            }
-        });
-    </script>
+<script src="script.js"></script>
 </body>
 </html>
