@@ -240,3 +240,12 @@
         .social-icon:hover {
             transform: translateY(-5px);
         }
+
+        /* Skill tile draggable affordance */
+        .skill-tile {
+            cursor: grab;
+            touch-action: pan-y;
+            user-select: none;
+        }
+
+        .skill-tile:active { cursor: grabbing; }

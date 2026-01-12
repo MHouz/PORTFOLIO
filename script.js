@@ -79,4 +79,56 @@
                     // contactForm.reset();
                 });
             }
+
+            // --- GSAP animations for Skills section ---
+            try {
+                if (window.gsap && window.ScrollTrigger) {
+                    gsap.registerPlugin(ScrollTrigger, Draggable);
+
+                    // Slide-in skill tiles (tech tiles)
+                    const skillTiles = document.querySelectorAll('#skills .skill-tile');
+                    if (skillTiles.length) {
+                        gsap.from(skillTiles, {
+                            x: -60,
+                            opacity: 0,
+                            stagger: 0.12,
+                            duration: 0.7,
+                            ease: 'power3.out',
+                            scrollTrigger: {
+                                trigger: '#skills',
+                                start: 'top 80%',
+                                toggleActions: 'play none none reverse'
+                            }
+                        });
+
+                        // Make tiles draggable on desktop - they snap back on release
+                        skillTiles.forEach(tile => {
+                            Draggable.create(tile, {
+                                type: 'x,y',
+                                edgeResistance: 0.85,
+                                bounds: window.document.body,
+                                inertia: true,
+                                onDragEnd: function() {
+                                    gsap.to(this.target, { x: 0, y: 0, duration: 0.5, ease: 'power2.out' });
+                                }
+                            });
+                        });
+                    }
+
+                    // Slide-in left-side skill bars
+                    const skillBars = document.querySelectorAll('#skills .animate-on-scroll > .mb-6');
+                    if (skillBars.length) {
+                        gsap.from(skillBars, {
+                            y: 40,
+                            opacity: 0,
+                            stagger: 0.12,
+                            duration: 0.7,
+                            ease: 'power3.out',
+                            scrollTrigger: { trigger: '#skills', start: 'top 80%' }
+                        });
+                    }
+                }
+            } catch (err) {
+                console.warn('GSAP init error', err);
+            }
         });
