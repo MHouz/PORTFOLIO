@@ -3,6 +3,12 @@
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        body::-webkit-scrollbar {
+            display: none;
         }
         
         /* Intro Animation */
